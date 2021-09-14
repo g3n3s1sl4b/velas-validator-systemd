@@ -1,0 +1,14 @@
+[Unit]
+Description=Run Velas node
+After=network-online.target
+
+[Service]
+EnvironmentFile=-/etc/default/velas
+ExecStart=/root/velas-release/bin/velas-validator $VELAS_OPTS
+KillMode=control-group
+Restart=on-failure
+LimitNOFILE=762144
+LimitNPROC=762144
+
+[Install]
+WantedBy=multi-user.target
